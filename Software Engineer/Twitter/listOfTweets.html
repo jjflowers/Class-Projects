@@ -1,0 +1,61 @@
+<!doctype html>
+<head>
+  <meta charset="utf-8">
+
+  <title>Group 5</title>
+  <meta name="description" content="Group 5 Twitter Project">
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+  <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.3.1.min.js"></script>
+
+  <script type="text/javascript">
+  Parse.initialize("8LdZIrW1auCCKDrmxT5IIu165nFfdcvIsOPlaLND", "GYo3gKH2KNqxCI0SvjS6TkqBeaSMVF8iMr6cIAYa");
+    var currentUser = Parse.User.current();
+  if (currentUser) {
+
+  } else {
+      window.location.replace("loginPage.html");
+  }
+  </script>
+  
+</head>
+
+<body>
+
+
+	<!-- home button -->
+	<form name="homeButton" action="home.html" method="post">
+		<button type="submit">Home</button>
+	</form>	
+
+	<!-- previous 5 tweets button -->
+	<form name="previousButton" onsubmit="return previousTweets()" method="post">
+		<button type="submit">Previous</button>
+	</form>
+
+	<!-- next 5 tweets button -->
+	<form name="nextButton" onsubmit="return nextTweets()" method="post">
+		<button type="submit">Next</button>
+	</form>
+	
+	<!-- list of tweets -->
+<!-- -----------needs to be implemented--------- -->	
+	
+  <script type="text/javascript">
+  	// replace the current 5 tweets with the previous 5
+  	function previousTweets(){
+// ------------- needs to be implemented -------------------
+  	}
+  	
+  	// replace the current 5 tweets with the next 5
+  	function nextTweets(){
+// ------------- needs to be implemented -------------------
+  	}
+  	
+  </script>
+
+</body>
+
+</html>

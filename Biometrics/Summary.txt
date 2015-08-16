@@ -1,0 +1,1 @@
+Create a system that will measure hands and is able compare if they are the same or different hand.

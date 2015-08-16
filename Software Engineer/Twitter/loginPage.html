@@ -1,0 +1,107 @@
+<!doctype html>
+<head>
+  <meta charset="utf-8">
+
+  <title>Group 5 Log-In Page</title>
+  <meta name="description" content="Group 5 Twitter Project">
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+  <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.3.1.min.js"></script>
+  <script type="text/javascript">
+Parse.initialize("8LdZIrW1auCCKDrmxT5IIu165nFfdcvIsOPlaLND", "GYo3gKH2KNqxCI0SvjS6TkqBeaSMVF8iMr6cIAYa");
+  var currentUser = Parse.User.current();
+if (currentUser) {
+    window.location.replace("home.html");
+} else {
+    // show the signup or login page
+}
+</script>
+  
+</head>
+
+<body>
+
+	<p>Login Page</p>
+	
+	<!-- this form takes the user's name and email and calls the login function -->
+	<!-- if login is successful go to the home page -->
+	<form name="loginForm" onsubmit="return verifyForm()" method="post">
+		<section>
+			<label>Email address</label>
+			<input type="text" name="email">
+		
+		</section>
+		
+		<section>
+			<label>Password</label>
+			<input type="password" name="password">
+		</section>
+		
+		<section>
+			<button type="submit">Log-In</button>
+		</section>
+	</form>
+	
+	<!-- make a reset password button -->
+	<form name="resetForm" onsubmit="return resetPassword()" method="post">
+		<button type="submit">Reset Password</button>
+	</form>
+	
+	<!-- make a create account button -->
+	<form name="createAccountButton" action="accountCreation.html" method="post">
+		<button type="submit">Create Account</button>
+	</form>
+		
+  <script type="text/javascript">
+  	
+  	// submit the form for verification
+  	function verifyForm(){
+  		// get the email and password fields
+  		var email = document.forms["loginForm"]["email"].value;
+  		var password = document.forms["loginForm"]["password"].value;
+  		
+  		// make sure there is something entered in email
+  		if (email == null || email == ""){
+  			// alert user
+  			alert("Please enter an email address");
+  			return false;
+  		}
+  		
+  		// do the same for password
+  		if (password == null || password == ""){
+  			alert("Please enter a password");
+  			return false;
+  		}
+      Parse.initialize("8LdZIrW1auCCKDrmxT5IIu165nFfdcvIsOPlaLND", "GYo3gKH2KNqxCI0SvjS6TkqBeaSMVF8iMr6cIAYa");
+      Parse.User.logIn(email, password, {
+  success: function(user) {
+    // Do stuff after successful login.
+    var currentUser = Parse.User.current();
+    window.location.replace("home.html");
+  },
+  error: function(user, error) {
+    // The login failed. Check error to see why.
+  }
+});
+
+  		// verify email/password with Parse
+//------------ needs to be impemented -----------------------------
+  		// if it hasn't failed yet then return true
+  		return false;
+  	
+  	}
+  	
+  	// reset the user's password
+  	function resetPassword(){
+// ------- needs to be implemented --------------
+  	}
+
+
+  	
+  </script>
+
+</body>
+
+</html>

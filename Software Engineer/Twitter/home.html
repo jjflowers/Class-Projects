@@ -1,0 +1,57 @@
+<!doctype html>
+<head>
+  <meta charset="utf-8">
+
+  <title>Group 5 Home</title>
+  <meta name="description" content="Group 5">
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+  <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.3.1.min.js"></script>
+
+	<script type="text/javascript">
+	Parse.initialize("8LdZIrW1auCCKDrmxT5IIu165nFfdcvIsOPlaLND", "GYo3gKH2KNqxCI0SvjS6TkqBeaSMVF8iMr6cIAYa");
+	  var currentUser = Parse.User.current();
+	if (currentUser) {
+
+	} else {
+	    window.location.replace("loginPage.html");
+	}
+	</script>
+</head>
+
+<body>
+
+	<!-- view tweets button -->
+	<form name="viewTweetsButton" action="listOfTweets.html" method="post">
+		<button type="submit">View Tweets</button>
+	</form>
+	
+	<!-- create tweet button -->
+	<form name="createTweetButton" action="createTweet.html" method="post">
+		<button type="submit">Create Tweet</button>
+	</form>
+	
+	<!-- log out button -->
+	<form name="logOutButton" action="loginPage.html" onsubmit="return logOut()" method="post">
+		<button type="submit">Log Out</button>
+	</form>
+	
+	<script type="text/javascript">
+  		// send log out details to Parse
+
+  	function logOut(){
+  		Parse.initialize("8LdZIrW1auCCKDrmxT5IIu165nFfdcvIsOPlaLND", "GYo3gKH2KNqxCI0SvjS6TkqBeaSMVF8iMr6cIAYa");
+  		var currentUser = Parse.User.current();
+  	Parse.User.logOut();
+	var currentUser = Parse.User.current();
+	}  // this will now be null
+// --------- needs to be implemented --------------
+		
+  		
+  	
+  	</script>
+</body>
+
+</html>

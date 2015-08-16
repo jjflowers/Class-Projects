@@ -1,0 +1,154 @@
+<!doctype html>
+<head>
+  <meta charset="utf-8">
+
+  <title>Group 5</title>
+  <meta name="description" content="Group 5 Twitter Project">
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+  <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.3.1.min.js"></script>
+
+<script type="text/javascript">
+Parse.initialize("8LdZIrW1auCCKDrmxT5IIu165nFfdcvIsOPlaLND", "GYo3gKH2KNqxCI0SvjS6TkqBeaSMVF8iMr6cIAYa");
+  var currentUser = Parse.User.current();
+if (currentUser) {
+    window.location.replace("home.html");
+} else {
+    // show the signup or login page
+}
+</script>
+  
+</head>
+
+<body>
+
+
+	<!-- collect details and call verifyForm() -->
+	<form name="accountForm" action="home.html" onsubmit="return verifyForm()" method="post">
+		
+		<section>
+			<label>Email address</label>
+			<input type="text" name="email">
+		</section>
+		
+		<section>
+			<label>First name</label>
+			<input type="text" name="firstName">
+		</section>
+		
+		<section>
+			<label>Last name</label>
+			<input type="text" name="lastName">
+		</section>
+		
+		<section>
+			<label>Password</label>
+			<input type="password" name="password">
+		</section>
+		
+		<section>
+			<label>Password strength: </label>
+			
+			<!-- show password strength -->			
+<!-- ----------needs to be implemented----------------- -->
+		
+		<section>
+			<button type="submit">Create Account</button>
+		</section>
+	
+	
+	</form>
+
+	<!-- cancel button -->
+	<form name="cancelButton" action="loginPage.html" method="post">
+		<button type="submit">Cancel</button>
+	</form>
+	
+	
+  <script type="text/javascript">
+
+  	// verify details from account creation form
+  	function verifyForm(){
+  		// get the email, names, and password fields
+  		var email = document.forms["accountForm"]["email"].value;
+  		var firstName = document.forms["accountForm"]["firstName"].value;
+  		var lastName = document.forms["accountForm"]["lastName"].value;
+  		var password = document.forms["accountForm"]["password"].value;
+  		
+  		// make sure there is something entered in email
+  		if (email == null || email == ""){
+  			// alert user
+  			alert("Please enter an email address");
+  			return false;
+  		}
+  		
+  		// do the same for first name
+  		if (firstName == null || firstName == ""){
+  			alert("Please enter a first name");
+  			return false;
+  		}
+  		
+  		// do the same for last name
+  		if (lastName == null || lastName == ""){
+  			alert("Please enter a last name");
+  			return false;
+  		}
+  	
+  		// do the same for password
+  		if (password == null || password == ""){
+  			alert("Please enter a password");
+  			return false;
+  		}
+  		
+  		// make sure there is not already an account with this email
+      //parse takes care of this issue.
+//------------ needs to be impemented -----------------------------
+  		
+  		// submit account to Parse
+      Parse.initialize("8LdZIrW1auCCKDrmxT5IIu165nFfdcvIsOPlaLND", "GYo3gKH2KNqxCI0SvjS6TkqBeaSMVF8iMr6cIAYa");
+      var user = new Parse.User();
+      user.set("username", email);
+      user.set("password", password);
+      user.set("email", email);
+ 
+      // other fields can be set just like with Parse.Object
+      user.set("fname", firstName);
+      user.set("lname", lastName);
+ 
+      user.signUp(null, {
+        success: function(user) {
+         // Hooray! Let them use the app now.
+        },
+        error: function(user, error) {
+         // Show the error message somewhere and let the user try again.
+         alert("Error: " + error.code + " " + error.message);
+        }
+      });
+      Parse.User.logIn(email, password, {
+      success: function(user) {
+    var currentUser = Parse.User.current();
+    window.location.replace("home.html");
+      },
+      error: function(user, error) {
+    // The login failed. Check error to see why.
+      }
+      });
+//------------ needs to be implemented ----------------------------------
+  		
+  		// if it hasn't failed yet then return true
+  		return false;
+  		
+  	}
+  	
+  	//show password strength
+  	function passwordStrength(){
+// ----------- needs to be implemented ------------
+  	}
+  	
+  </script>
+
+</body>
+
+</html>

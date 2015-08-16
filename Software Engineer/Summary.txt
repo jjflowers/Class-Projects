@@ -1,0 +1,1 @@
+A group project that required us to create a Twitter-like webiste using software development guidelines, such as agile development.
